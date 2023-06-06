@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Marcellus&family=Poppins&family=DM+Sans&display=swap');
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E6E0DC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2C2C2C;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2c2c2ccb;
+}
