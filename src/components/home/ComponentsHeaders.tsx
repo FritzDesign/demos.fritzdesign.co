@@ -12,7 +12,7 @@ import {
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
 
-const HeadingWithSearch: React.FC = () => {
+const ComponentsHeader: React.FC = () => {
   return (
     <Box
       as='section'
@@ -51,4 +51,4 @@ const HeadingWithSearch: React.FC = () => {
   );
 };
 
-export default HeadingWithSearch;
+export default ComponentsHeader;

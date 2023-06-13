@@ -53,7 +53,7 @@ export const Gallery = (props: GalleryProps) => {
       >
         <Carousel ref={ref}>
           {products.map((product, i) => (
-            <CarouselSlide       borderRadius='4px' pos='relative' key={i}>
+            <CarouselSlide borderRadius='4px' pos='relative' key={i}>
               <Box
                 pos='absolute'
                 top='0'
@@ -78,6 +78,12 @@ export const Gallery = (props: GalleryProps) => {
                 />
               </AspectRatio>
               <Heading
+                fontSize={[
+                  '2xl !important',
+                  '4xl !important',
+                  '6xl !important'
+                ]}
+                lineHeight='100%'
                 pos='absolute'
                 bottom='1.5rem'
                 left='1.5rem'

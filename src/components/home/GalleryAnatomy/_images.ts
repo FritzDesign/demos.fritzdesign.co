@@ -18,7 +18,7 @@ export const products = [
   },
   {
     id: '2',
-    name: 'Demo 2',
+    name: 'Corporate',
     currency: 'USD',
     price: 199,
     salePrice: 179.99,
@@ -33,7 +33,7 @@ export const products = [
   },
   {
     id: '3',
-    name: 'Demo 3',
+    name: 'Restaurant',
     currency: 'USD',
     price: 199,
     src: placeholder,
@@ -46,7 +46,7 @@ export const products = [
   },
   {
     id: '4',
-    name: 'Demo 4',
+    name: 'Blogs',
     currency: 'GBP',
     price: 199,
     src: placeholder,
