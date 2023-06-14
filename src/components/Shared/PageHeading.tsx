@@ -1,7 +1,12 @@
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react';
 import React from 'react';
 
-const PageHeading: React.FC = () => {
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const PageHeading: React.FC<Props> = ({ title, description = '' }) => {
   return (
     <Box
       as='section'
@@ -13,12 +18,9 @@ const PageHeading: React.FC = () => {
       <Container>
         <Stack spacing='1'>
           <Heading size={{ base: 'xs', md: 'sm' }} fontWeight='medium'>
-            Demos
+            {title}
           </Heading>
-          <Text color='whiteAlpha.700'>
-            Experience bite-sized, interactive concept websites designed to
-            engage and captivate users
-          </Text>
+          <Text color='whiteAlpha.700'>{description}</Text>
         </Stack>
       </Container>
     </Box>

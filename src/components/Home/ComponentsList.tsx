@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Stack } from '@chakra-ui/react';
+import { Stack, Text } from '@chakra-ui/react';
 import items from './ComponentsAnatomy/_items';
 import ComponentListItem from './ComponentsAnatomy/ComponentListItem';
 
@@ -19,8 +19,9 @@ const ComponentsList: React.FC<Props> = ({ searchedComponents }) => {
 
   return (
     <Stack id='component-wrapper' py='2rem' minHeight={minHeight}>
-      {searchedComponents
-        ? searchedComponents.map((item) => {
+      {searchedComponents ? (
+        searchedComponents.length ? (
+          searchedComponents.map((item) => {
             return (
               <ComponentListItem
                 key={item.id}
@@ -31,17 +32,22 @@ const ComponentsList: React.FC<Props> = ({ searchedComponents }) => {
               />
             );
           })
-        : items.map((item) => {
-            return (
-              <ComponentListItem
-                key={item.id}
-                categoryName={item.categoryName}
-                description={item.description}
-                label={item.label}
-                handle={item.handle}
-              />
-            );
-          })}
+        ) : (
+          <Text color='white' textAlign='center'>No Results</Text>
+        )
+      ) : (
+        items.map((item) => {
+          return (
+            <ComponentListItem
+              key={item.id}
+              categoryName={item.categoryName}
+              description={item.description}
+              label={item.label}
+              handle={item.handle}
+            />
+          );
+        })
+      )}
     </Stack>
   );
 };

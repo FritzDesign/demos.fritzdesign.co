@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Box } from '@chakra-ui/react';
-import HomePage from './home/HomePage';
+import HomePage from './Home/Home.Page';
+import ShowcasePage from './Showcase/Showcase.Page';
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
     >
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/components/:handle' element={<ShowcasePage />} />
       </Routes>
     </Box>
   );
