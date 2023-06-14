@@ -9,10 +9,38 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
+import items from './ComponentsAnatomy/_items';
 
-const ComponentsHeader: React.FC = () => {
+interface Props {
+  setSearchedComponents: (components: null | any[]) => void;
+}
+//@ts-ignore
+const ComponentsHeader: React.FC<Props> = ({ setSearchedComponents }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      if (searchTerm === '') {
+        return setSearchedComponents(null);
+      }
+      //@ts-ignore
+      const result = items.filter((item) => {
+        if (
+          item.searchTerms.filter((term) => {
+            return term.includes(searchTerm);
+          }).length
+        ) {
+          return item;
+        }
+      });
+      setSearchedComponents(result);
+    }, 750);
+
+    return () => clearTimeout(debounce);
+  }, [searchTerm]);
+
   return (
     <Box
       as='section'
@@ -41,7 +69,11 @@ const ComponentsHeader: React.FC = () => {
               <InputLeftElement pointerEvents='none'>
                 <Icon as={FiSearch} color='fg.muted' boxSize='5' />
               </InputLeftElement>
-              <Input placeholder='Search' bg='gray.900' />
+              <Input
+                placeholder='Search'
+                bg='gray.900'
+                onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+              />
             </InputGroup>
           </Stack>
           <Divider />
