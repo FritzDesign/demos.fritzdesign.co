@@ -11,7 +11,7 @@ import { FaSun, FaMoon } from 'react-icons/fa';
 const ThemeToggle: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <HStack justifyContent='flex-end'>
+    <HStack justifyContent='flex-end' pr='2rem' py='1rem'>
       <Icon
         color={useColorModeValue('blackAlpha.700', 'yellow.300')}
         fontSize='16'

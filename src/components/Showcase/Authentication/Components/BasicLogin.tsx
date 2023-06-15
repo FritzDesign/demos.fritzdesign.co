@@ -40,10 +40,10 @@ const BasicLogin: React.FC = () => {
           </Stack>
         </Stack>
         <Box
-          py={{ base: '0', sm: '8' }}
+          py={{ base: '8', sm: '8' }}
           px={{ base: '4', sm: '10' }}
           boxShadow={{ base: 'none', sm: 'md' }}
-          borderRadius={{ base: 'none', sm: 'xl' }}
+          borderRadius={{ base: 'xl', sm: 'xl' }}
           bgColor={useColorModeValue('whiteAlpha.900','gray.900')}
         >
           <Stack spacing='6'>

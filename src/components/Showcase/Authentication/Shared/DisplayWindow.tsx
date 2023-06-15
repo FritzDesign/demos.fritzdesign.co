@@ -42,8 +42,9 @@ const DisplayWindow: React.FC<Props> = ({
         w='100%'
         bgColor={useColorModeValue('whiteAlpha.800', 'gray.700')}
         borderRadius='8px'
-        px='2rem'
-        py='4rem'
+        pb='2rem'
+        px='0rem'
+        border='1px solid #2c2c2c'
       >
         {hasDarkMode && <ThemeToggle />}
         {component}

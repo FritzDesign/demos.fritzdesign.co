@@ -13,7 +13,7 @@ const AuthenticationPage: React.FC = () => {
     <Box>
       <PageHeading title='Authentication' />
       <Stack py='2rem' w='100dvw' alignItems='center'>
-        <Stack maxW='1216px' w='100%' alignItems='center'>
+        <Stack maxW='1216px' w='100%' alignItems='center' px='.25rem'>
           {authComponents.map((item, i) => (
             <DisplayWindow
               key={i}
