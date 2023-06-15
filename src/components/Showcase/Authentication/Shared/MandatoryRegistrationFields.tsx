@@ -1,5 +1,11 @@
 import React from 'react';
-import { FormControl, FormLabel, Input, Text } from '@chakra-ui/react';
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Text,
+  useColorModeValue
+} from '@chakra-ui/react';
 import { FieldTypeWithValue } from '../Components/BasicRegister';
 
 interface Props {
@@ -15,7 +21,11 @@ const MandatoryRegistrationFields: React.FC<Props> = ({
         <FormLabel
           htmlFor='email'
           requiredIndicator={
-            <Text as='span' pl='4px' color='red.300'>
+            <Text
+              as='span'
+              pl='4px'
+              color={useColorModeValue('red.600', 'red.300')}
+            >
               *
             </Text>
           }
@@ -25,7 +35,6 @@ const MandatoryRegistrationFields: React.FC<Props> = ({
         <Input
           id='email-br'
           type='email'
-          color='gray.900'
           onChange={(e) =>
             updateValidateFields({
               fieldType: 'email',
@@ -38,7 +47,11 @@ const MandatoryRegistrationFields: React.FC<Props> = ({
         <FormLabel
           htmlFor='password'
           requiredIndicator={
-            <Text as='span' pl='4px' color='red.300'>
+            <Text
+              as='span'
+              pl='4px'
+              color={useColorModeValue('red.600', 'red.300')}
+            >
               *
             </Text>
           }
@@ -48,7 +61,6 @@ const MandatoryRegistrationFields: React.FC<Props> = ({
         <Input
           id='password-br'
           type='password'
-          color='gray.900'
           onChange={(e) =>
             updateValidateFields({
               fieldType: 'password',
@@ -61,7 +73,11 @@ const MandatoryRegistrationFields: React.FC<Props> = ({
         <FormLabel
           htmlFor='password'
           requiredIndicator={
-            <Text as='span' pl='4px' color='red.300'>
+            <Text
+              as='span'
+              pl='4px'
+              color={useColorModeValue('red.600', 'red.300')}
+            >
               *
             </Text>
           }
@@ -71,7 +87,6 @@ const MandatoryRegistrationFields: React.FC<Props> = ({
         <Input
           id='confirm-password-br'
           type='password'
-          color='gray.900'
           onChange={(e) =>
             updateValidateFields({
               fieldType: 'confirmPassword',

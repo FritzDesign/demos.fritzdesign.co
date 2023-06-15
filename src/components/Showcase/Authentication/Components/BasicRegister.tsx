@@ -9,7 +9,8 @@ import {
   Icon,
   Input,
   Stack,
-  Text
+  Text,
+  useColorModeValue
 } from '@chakra-ui/react';
 import Logo from '../Shared/Logo';
 import React, { useEffect, useState } from 'react';
@@ -39,12 +40,12 @@ const BasicRegister: React.FC = () => {
 
   return (
     <Container maxW='md'>
-      <Stack spacing='8' color='whiteAlpha.900'>
+      <Stack spacing='8'>
         <Stack spacing='6' align='center'>
           <Logo />
           <Stack spacing='3' textAlign='center'>
             <Heading size={{ base: 'xs', md: 'sm' }}>Create an account</Heading>
-            <Text color='whiteAlpha.800'>
+            <Text>
               Start making your dreams come true
             </Text>
           </Stack>
@@ -55,7 +56,7 @@ const BasicRegister: React.FC = () => {
               <FormLabel
                 htmlFor='name'
                 requiredIndicator={
-                  <Text as='span' pl='4px' color='red.300'>
+                  <Text as='span' pl='4px' color={useColorModeValue('red.600','red.300')}>
                     *
                   </Text>
                 }
@@ -65,7 +66,6 @@ const BasicRegister: React.FC = () => {
               <Input
                 id='name-br'
                 type='text'
-                color='gray.900'
                 onChange={(e) =>
                   updateValidateFields({
                     fieldType: 'name',
@@ -85,7 +85,7 @@ const BasicRegister: React.FC = () => {
             </Button>
             <HStack>
               <Divider />
-              <Text textStyle='sm' whiteSpace='nowrap' color='whiteAlpha.800'>
+              <Text textStyle='sm' whiteSpace='nowrap'>
                 or sign up with
               </Text>
               <Divider />
@@ -94,10 +94,10 @@ const BasicRegister: React.FC = () => {
           </Stack>
         </Stack>
         <HStack justify='center' spacing='1'>
-          <Text textStyle='sm' color='whiteAlpha.800'>
+          <Text textStyle='sm'>
             Already have an account?
           </Text>
-          <Button variant='text' size='sm' color='blue.300'>
+          <Button variant='text' size='sm'>
             Log in
           </Button>
         </HStack>

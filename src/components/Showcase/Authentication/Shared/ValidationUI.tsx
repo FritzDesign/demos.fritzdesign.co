@@ -1,7 +1,6 @@
 import React from 'react';
-import { HStack, Icon, Stack, Text } from '@chakra-ui/react';
+import { HStack, Icon, Stack, Text, useColorModeValue } from '@chakra-ui/react';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
-
 
 interface Props {
   isValid: {
@@ -20,7 +19,11 @@ const ValidationUI: React.FC<Props> = ({ isValid }) => {
       <HStack gap='.5rem'>
         <Icon
           fontSize='20'
-          color={isValid.email ? 'green.300' : 'red.300'}
+          color={
+            isValid.email
+              ? useColorModeValue('green.600', 'green.300')
+              : useColorModeValue('red.600', 'red.300')
+          }
           as={isValid.email ? AiOutlineCheckCircle : AiOutlineCloseCircle}
         />
         <Text>Valid E-mail</Text>
@@ -28,7 +31,11 @@ const ValidationUI: React.FC<Props> = ({ isValid }) => {
       <HStack gap='.5rem'>
         <Icon
           fontSize='20'
-          color={isValid.passwordLength ? 'green.300' : 'red.300'}
+          color={
+            isValid.passwordLength
+              ? useColorModeValue('green.600', 'green.300')
+              : useColorModeValue('red.600', 'red.300')
+          }
           as={
             isValid.passwordLength ? AiOutlineCheckCircle : AiOutlineCloseCircle
           }
@@ -38,7 +45,11 @@ const ValidationUI: React.FC<Props> = ({ isValid }) => {
       <HStack gap='.5rem'>
         <Icon
           fontSize='20'
-          color={isValid.passwordHasCapital ? 'green.300' : 'red.300'}
+          color={
+            isValid.passwordHasCapital
+              ? useColorModeValue('green.600', 'green.300')
+              : useColorModeValue('red.600', 'red.300')
+          }
           as={
             isValid.passwordHasCapital
               ? AiOutlineCheckCircle
@@ -50,7 +61,11 @@ const ValidationUI: React.FC<Props> = ({ isValid }) => {
       <HStack gap='.5rem'>
         <Icon
           fontSize='20'
-          color={isValid.passwordHasSymbol ? 'green.300' : 'red.300'}
+          color={
+            isValid.passwordHasSymbol
+              ? useColorModeValue('green.600', 'green.300')
+              : useColorModeValue('red.600', 'red.300')
+          }
           as={
             isValid.passwordHasSymbol
               ? AiOutlineCheckCircle
@@ -62,7 +77,11 @@ const ValidationUI: React.FC<Props> = ({ isValid }) => {
       <HStack gap='.5rem'>
         <Icon
           fontSize='20'
-          color={isValid.passwordsMatch ? 'green.300' : 'red.300'}
+          color={
+            isValid.passwordsMatch
+              ? useColorModeValue('green.600', 'green.300')
+              : useColorModeValue('red.600', 'red.300')
+          }
           as={
             isValid.passwordsMatch ? AiOutlineCheckCircle : AiOutlineCloseCircle
           }

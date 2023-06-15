@@ -11,7 +11,8 @@ import {
   HStack,
   Input,
   Stack,
-  Text
+  Text,
+  useColorModeValue
 } from '@chakra-ui/react';
 import OAuthButtons from '../Shared/OAuthButtons';
 import PasswordField from '../Shared/PasswordField';
@@ -21,18 +22,18 @@ const BasicLogin: React.FC = () => {
   return (
     <Container
       maxW='lg'
-      color='whiteAlpha.900'
+      color={useColorModeValue('blackAlpha.900', 'whiteAlpha.900')}
     >
       <Stack spacing='8'>
         <Stack spacing='6'>
           <Logo />
           <Stack spacing={{ base: '2', md: '3' }} textAlign='center'>
-            <Heading color='whiteAlpha.900' size={{ base: 'xs', md: 'sm' }}>
+            <Heading color='inherit' size={{ base: 'xs', md: 'sm' }}>
               Log in to your account
             </Heading>
             <HStack spacing='1' justify='center'>
-              <Text color='whiteAlpha.800'>Don't have an account?</Text>
-              <Button color='blue.300' variant='text' size='lg'>
+              <Text color={useColorModeValue('blackAlpha.700','whiteAlpha.800')}>Don't have an account?</Text>
+              <Button variant='text' size='lg'>
                 Sign up
               </Button>
             </HStack>
@@ -43,19 +44,19 @@ const BasicLogin: React.FC = () => {
           px={{ base: '4', sm: '10' }}
           boxShadow={{ base: 'none', sm: 'md' }}
           borderRadius={{ base: 'none', sm: 'xl' }}
-          bgColor='gray.900'
+          bgColor={useColorModeValue('whiteAlpha.900','gray.900')}
         >
           <Stack spacing='6'>
             <Stack spacing='5'>
               <FormControl>
                 <FormLabel htmlFor='email'>Email</FormLabel>
-                <Input id='email-bl' type='email' color='gray.900' />
+                <Input id='email-bl' type='email' />
               </FormControl>
               <PasswordField />
             </Stack>
             <HStack justify='space-between'>
               <Checkbox defaultChecked>Remember me</Checkbox>
-              <Button color='blue.300' variant='text' size='sm'>
+              <Button variant='text' size='sm'>
                 Forgot password?
               </Button>
             </HStack>
