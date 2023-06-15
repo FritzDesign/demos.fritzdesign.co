@@ -17,6 +17,12 @@ import OAuthButtons from '../Shared/OAuthButtons';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import useValidateFields from '../../../../hooks/useValidateFields';
 import ValidationUI from '../Shared/ValidationUI';
+import MandatoryRegistrationFields from '../Shared/MandatoryRegistrationFields';
+
+export interface FieldTypeWithValue {
+  fieldType: 'name' | 'email' | 'password' | 'confirmPassword';
+  value: string;
+}
 
 const BasicRegister: React.FC = () => {
   const [fields, setFields] = useState({
@@ -27,13 +33,7 @@ const BasicRegister: React.FC = () => {
   });
   const isValid = useValidateFields(fields);
 
-  const updateValidateFields = ({
-    fieldType,
-    value
-  }: {
-    fieldType: 'name' | 'email' | 'password' | 'confirmPassword';
-    value: string;
-  }) => {
+  const updateValidateFields = ({ fieldType, value }: FieldTypeWithValue) => {
     setFields((prev) => ({ ...prev, [fieldType]: value }));
   };
 
@@ -74,75 +74,9 @@ const BasicRegister: React.FC = () => {
                 }
               />
             </FormControl>
-            <FormControl isRequired>
-              <FormLabel
-                htmlFor='email'
-                requiredIndicator={
-                  <Text as='span' pl='4px' color='red.300'>
-                    *
-                  </Text>
-                }
-              >
-                Email
-              </FormLabel>
-              <Input
-                id='email-br'
-                type='email'
-                color='gray.900'
-                onChange={(e) =>
-                  updateValidateFields({
-                    fieldType: 'email',
-                    value: e.target.value
-                  })
-                }
-              />
-            </FormControl>
-            <FormControl isRequired>
-              <FormLabel
-                htmlFor='password'
-                requiredIndicator={
-                  <Text as='span' pl='4px' color='red.300'>
-                    *
-                  </Text>
-                }
-              >
-                Password
-              </FormLabel>
-              <Input
-                id='password-br'
-                type='password'
-                color='gray.900'
-                onChange={(e) =>
-                  updateValidateFields({
-                    fieldType: 'password',
-                    value: e.target.value
-                  })
-                }
-              />
-            </FormControl>
-            <FormControl isRequired>
-              <FormLabel
-                htmlFor='password'
-                requiredIndicator={
-                  <Text as='span' pl='4px' color='red.300'>
-                    *
-                  </Text>
-                }
-              >
-                Confirm Password
-              </FormLabel>
-              <Input
-                id='confirm-password-br'
-                type='password'
-                color='gray.900'
-                onChange={(e) =>
-                  updateValidateFields({
-                    fieldType: 'confirmPassword',
-                    value: e.target.value
-                  })
-                }
-              />
-            </FormControl>
+            <MandatoryRegistrationFields
+              updateValidateFields={updateValidateFields}
+            />
           </Stack>
           <ValidationUI isValid={isValid} />
           <Stack spacing='6'>
