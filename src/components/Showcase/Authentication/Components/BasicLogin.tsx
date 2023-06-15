@@ -49,7 +49,7 @@ const BasicLogin: React.FC = () => {
             <Stack spacing='5'>
               <FormControl>
                 <FormLabel htmlFor='email'>Email</FormLabel>
-                <Input id='email' type='email' color='gray.900' />
+                <Input id='email-bl' type='email' color='gray.900' />
               </FormControl>
               <PasswordField />
             </Stack>

@@ -37,7 +37,6 @@ const PasswordField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           />
         </InputRightElement>
         <Input
-          id='password'
           color='gray.900'
           ref={mergeRef}
           name='password'

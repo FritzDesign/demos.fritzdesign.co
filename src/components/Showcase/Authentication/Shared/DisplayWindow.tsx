@@ -14,7 +14,7 @@ const DisplayWindow: React.FC<Props> = ({ name, component }) => {
         {name}
       </Heading>
       <VariationTabs />
-      <Box w='100%' bgColor='gray.700' borderRadius='8px' p='2rem'>
+      <Box w='100%' bgColor='gray.700' borderRadius='8px' px='2rem' py='4rem'>
         {component}
       </Box>
     </Stack>
