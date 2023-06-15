@@ -15,6 +15,8 @@ import Logo from '../Shared/Logo';
 import React, { useEffect, useState } from 'react';
 import OAuthButtons from '../Shared/OAuthButtons';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
+import useValidateFields from '../../../../hooks/useValidateFields';
+import ValidationUI from '../Shared/ValidationUI';
 
 const BasicRegister: React.FC = () => {
   const [fields, setFields] = useState({
@@ -23,14 +25,7 @@ const BasicRegister: React.FC = () => {
     password: '',
     confirmPassword: ''
   });
-  const [isValid, setIsValid] = useState({
-    email: false,
-    passwordLength: false,
-    passwordHasCapital: false,
-    passwordHasSymbol: false,
-    passwordsMatch: false,
-    all: false
-  });
+  const isValid = useValidateFields(fields);
 
   const updateValidateFields = ({
     fieldType,
@@ -41,63 +36,6 @@ const BasicRegister: React.FC = () => {
   }) => {
     setFields((prev) => ({ ...prev, [fieldType]: value }));
   };
-
-  useEffect(() => {
-    if (
-      fields.email.includes('@') &&
-      fields.email.includes('.') &&
-      fields.email.charAt(fields.email.length - 1) !== '.' &&
-      fields.email.charAt(fields.email.length - 1) !== '@' &&
-      fields.email.lastIndexOf('.') > fields.email.indexOf('@')
-    ) {
-      setIsValid((prev) => ({ ...prev, email: true }));
-    } else {
-      setIsValid((prev) => ({ ...prev, email: false }));
-    }
-
-    if (fields.password.length >= 8) {
-      setIsValid((prev) => ({ ...prev, passwordLength: true }));
-    } else {
-      setIsValid((prev) => ({ ...prev, passwordLength: false }));
-    }
-
-    if (
-      fields.password.match(
-        /^(?=.*[-\#\$\.\%\&\@\!\+\=\<\>\*\(\)\;\'\:\"\{\}])/
-      )
-    ) {
-      setIsValid((prev) => ({ ...prev, passwordHasSymbol: true }));
-    } else {
-      setIsValid((prev) => ({ ...prev, passwordHasSymbol: false }));
-    }
-
-    if (fields.password.toLowerCase() !== fields.password) {
-      setIsValid((prev) => ({ ...prev, passwordHasCapital: true }));
-    } else {
-      setIsValid((prev) => ({ ...prev, passwordHasCapital: false }));
-    }
-
-    if (fields.password === fields.confirmPassword && isValid.passwordLength) {
-      setIsValid((prev) => ({ ...prev, passwordsMatch: true }));
-    } else {
-      setIsValid((prev) => ({ ...prev, passwordsMatch: false }));
-    }
-  }, [fields]);
-
-  useEffect(() => {
-    if (
-      isValid.email &&
-      isValid.passwordLength &&
-      isValid.passwordHasCapital &&
-      isValid.passwordHasSymbol &&
-      isValid.passwordsMatch
-    ) {
-      setIsValid((prev) => ({ ...prev, all: true }));
-    } else {
-      setIsValid((prev) => ({ ...prev, all: false }));
-    }
-  }, [isValid]);
-  console.log(fields);
 
   return (
     <Container maxW='md'>
@@ -205,67 +143,8 @@ const BasicRegister: React.FC = () => {
                 }
               />
             </FormControl>
-            <Stack>
-              <HStack gap='.5rem'>
-                <Icon
-                  fontSize='20'
-                  color={isValid.email ? 'green.300' : 'red.300'}
-                  as={
-                    isValid.email ? AiOutlineCheckCircle : AiOutlineCloseCircle
-                  }
-                />
-                <Text>Valid E-mail</Text>
-              </HStack>
-              <HStack gap='.5rem'>
-                <Icon
-                  fontSize='20'
-                  color={isValid.passwordLength ? 'green.300' : 'red.300'}
-                  as={
-                    isValid.passwordLength
-                      ? AiOutlineCheckCircle
-                      : AiOutlineCloseCircle
-                  }
-                />
-                <Text>Password is at least 8 characters</Text>
-              </HStack>
-              <HStack gap='.5rem'>
-                <Icon
-                  fontSize='20'
-                  color={isValid.passwordHasCapital ? 'green.300' : 'red.300'}
-                  as={
-                    isValid.passwordHasCapital
-                      ? AiOutlineCheckCircle
-                      : AiOutlineCloseCircle
-                  }
-                />
-                <Text>Password contains a capital letter</Text>
-              </HStack>
-              <HStack gap='.5rem'>
-                <Icon
-                  fontSize='20'
-                  color={isValid.passwordHasSymbol ? 'green.300' : 'red.300'}
-                  as={
-                    isValid.passwordHasSymbol
-                      ? AiOutlineCheckCircle
-                      : AiOutlineCloseCircle
-                  }
-                />
-                <Text>Password contains a special character</Text>
-              </HStack>
-              <HStack gap='.5rem'>
-                <Icon
-                  fontSize='20'
-                  color={isValid.passwordsMatch ? 'green.300' : 'red.300'}
-                  as={
-                    isValid.passwordsMatch
-                      ? AiOutlineCheckCircle
-                      : AiOutlineCloseCircle
-                  }
-                />
-                <Text>Passwords Match</Text>
-              </HStack>
-            </Stack>
           </Stack>
+          <ValidationUI isValid={isValid} />
           <Stack spacing='6'>
             <Button variant='primary' isDisabled={!isValid.all}>
               Sign up
