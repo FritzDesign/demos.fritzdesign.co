@@ -6,22 +6,22 @@ import SignupWithTestimonial from '../Components/SignupWithTestimonial';
 const authComponents = [
   {
     name: 'Basic Login',
-    components: [<BasicLogin />],
+    component: <BasicLogin />,
     hasDarkMode: true
   },
   {
     name: 'Basic Register',
-    components: [<BasicRegister />],
+    component: <BasicRegister />,
     hasDarkMode: true
   },
   {
     name: 'Login With CTA',
-    components: [<LoginWithCTA />],
+    component: <LoginWithCTA />,
     hasDarkMode: true
   },
   {
     name: 'Signup with Testimonial',
-    components: [<SignupWithTestimonial />],
+    component: <SignupWithTestimonial />,
     hasDarkMode: true
   }
 ];

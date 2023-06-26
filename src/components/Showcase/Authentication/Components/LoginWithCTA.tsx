@@ -14,8 +14,16 @@ import {
 } from '@chakra-ui/react';
 import Logo from '../Shared/Logo';
 import SignInVariant from '../Shared/SignInVariant.form';
+import { ComponentProps } from '../models/Props';
 
-const LoginWithCTA: React.FC = () => {
+const LoginWithCTA: React.FC<ComponentProps> = ({ variant }) => {
+  if (variant === 'variant1') {
+    return <Flex minH={{ base: 'auto', md: '100vh' }}></Flex>;
+  }
+
+  if (variant === 'variant2') {
+    return <Flex minH={{ base: 'auto', md: '100vh' }}></Flex>;
+  }
   return (
     <Flex
       minH={{ base: 'auto', md: '100vh' }}

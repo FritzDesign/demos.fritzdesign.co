@@ -13,8 +13,16 @@ import { ImQuotesLeft, ImQuotesRight } from 'react-icons/im';
 import { Rating } from '../Shared/Rating';
 import { SignUpVariant } from '../Shared/SignupVariant.form';
 import React from 'react';
+import { ComponentProps } from '../models/Props';
 
-const SignupWithTestimonial: React.FC = () => {
+const SignupWithTestimonial: React.FC<ComponentProps> = ({ variant }) => {
+  if (variant === 'variant1') {
+    return <Box py={{ base: '12', md: '24' }} maxW='7xl' mx='auto'></Box>;
+  }
+
+  if (variant === 'variant2') {
+    return <Box py={{ base: '12', md: '24' }} maxW='7xl' mx='auto'></Box>;
+  }
   return (
     <Box py={{ base: '12', md: '24' }} maxW='7xl' mx='auto'>
       <Stack direction='row' spacing='12'>

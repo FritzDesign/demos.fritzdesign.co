@@ -19,13 +19,14 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import useValidateFields from '../../../../hooks/useValidateFields';
 import ValidationUI from '../Shared/ValidationUI';
 import MandatoryRegistrationFields from '../Shared/MandatoryRegistrationFields';
+import { ComponentProps } from '../models/Props';
 
 export interface FieldTypeWithValue {
   fieldType: 'name' | 'email' | 'password' | 'confirmPassword';
   value: string;
 }
 
-const BasicRegister: React.FC = () => {
+const BasicRegister: React.FC<ComponentProps> = ({ variant }) => {
   const [fields, setFields] = useState({
     name: '',
     email: '',
@@ -38,6 +39,14 @@ const BasicRegister: React.FC = () => {
     setFields((prev) => ({ ...prev, [fieldType]: value }));
   };
 
+  if (variant === 'variant1') {
+    return <Container maxW='md'></Container>;
+  }
+
+  if (variant === 'variant2') {
+    return <Container maxW='md'></Container>;
+  }
+
   return (
     <Container maxW='md'>
       <Stack spacing='8'>
@@ -45,9 +54,7 @@ const BasicRegister: React.FC = () => {
           <Logo />
           <Stack spacing='3' textAlign='center'>
             <Heading size={{ base: 'xs', md: 'sm' }}>Create an account</Heading>
-            <Text>
-              Start making your dreams come true
-            </Text>
+            <Text>Start making your dreams come true</Text>
           </Stack>
         </Stack>
         <Stack spacing='6'>
@@ -56,7 +63,11 @@ const BasicRegister: React.FC = () => {
               <FormLabel
                 htmlFor='name'
                 requiredIndicator={
-                  <Text as='span' pl='4px' color={useColorModeValue('red.600','red.300')}>
+                  <Text
+                    as='span'
+                    pl='4px'
+                    color={useColorModeValue('red.600', 'red.300')}
+                  >
                     *
                   </Text>
                 }
@@ -94,9 +105,7 @@ const BasicRegister: React.FC = () => {
           </Stack>
         </Stack>
         <HStack justify='center' spacing='1'>
-          <Text textStyle='sm'>
-            Already have an account?
-          </Text>
+          <Text textStyle='sm'>Already have an account?</Text>
           <Button variant='text' size='sm'>
             Log in
           </Button>

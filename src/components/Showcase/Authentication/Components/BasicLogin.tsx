@@ -17,8 +17,26 @@ import {
 import OAuthButtons from '../Shared/OAuthButtons';
 import PasswordField from '../Shared/PasswordField';
 import Logo from '../Shared/Logo';
+import { ComponentProps } from '../models/Props';
 
-const BasicLogin: React.FC = () => {
+const BasicLogin: React.FC<ComponentProps> = ({ variant }) => {
+  if (variant === 'variant1') {
+    return (
+      <Container
+        maxW='lg'
+        color={useColorModeValue('blackAlpha.900', 'whiteAlpha.900')}
+      ></Container>
+    );
+  }
+
+  if (variant === 'variant2') {
+    return (
+      <Container
+        maxW='lg'
+        color={useColorModeValue('blackAlpha.900', 'whiteAlpha.900')}
+      ></Container>
+    );
+  }
   return (
     <Container
       maxW='lg'
@@ -32,7 +50,11 @@ const BasicLogin: React.FC = () => {
               Log in to your account
             </Heading>
             <HStack spacing='1' justify='center'>
-              <Text color={useColorModeValue('blackAlpha.700','whiteAlpha.800')}>Don't have an account?</Text>
+              <Text
+                color={useColorModeValue('blackAlpha.700', 'whiteAlpha.800')}
+              >
+                Don't have an account?
+              </Text>
               <Button variant='text' size='lg'>
                 Sign up
               </Button>
@@ -44,7 +66,7 @@ const BasicLogin: React.FC = () => {
           px={{ base: '4', sm: '10' }}
           boxShadow={{ base: 'none', sm: 'md' }}
           borderRadius={{ base: 'xl', sm: 'xl' }}
-          bgColor={useColorModeValue('whiteAlpha.900','gray.900')}
+          bgColor={useColorModeValue('whiteAlpha.900', 'gray.900')}
         >
           <Stack spacing='6'>
             <Stack spacing='5'>

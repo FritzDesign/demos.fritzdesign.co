@@ -1,43 +1,26 @@
-import React from 'react';
-import {
-  Box,
-  HStack,
-  Heading,
-  Icon,
-  Stack,
-  Switch,
-  useColorModeValue
-} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Box, Heading, Stack, useColorModeValue } from '@chakra-ui/react';
 import VariationTabs from './VariationTabs';
 import ThemeToggle from '../../../Shared/ThemeToggle';
 
 interface Props {
   name: string;
-  component: React.ReactNode;
-  setPreviewIndex: ({
-    groupIndex,
-    componentIndex
-  }: {
-    groupIndex: number;
-    componentIndex: number;
-    }) => void;
-    grpIndex: number;
+  component: React.ReactElement;
   hasDarkMode?: boolean;
 }
 
 const DisplayWindow: React.FC<Props> = ({
   name,
   component,
-  setPreviewIndex,
-  grpIndex,
   hasDarkMode = false
 }) => {
+  const [variant, setVariant] = useState('default');
   return (
     <Stack w='100%' py='2rem'>
       <Heading size='md' color='whiteAlpha.800'>
         {name}
       </Heading>
-      <VariationTabs grpIndex={grpIndex} setPreviewIndex={setPreviewIndex} />
+      <VariationTabs variant={variant} setVariant={setVariant} />
       <Box
         w='100%'
         bgColor={useColorModeValue('whiteAlpha.800', 'gray.700')}
@@ -47,7 +30,7 @@ const DisplayWindow: React.FC<Props> = ({
         border='1px solid #2c2c2c'
       >
         {hasDarkMode && <ThemeToggle />}
-        {component}
+        {React.cloneElement(component, {variant, setVariant})}
       </Box>
     </Stack>
   );

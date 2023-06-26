@@ -9,23 +9,14 @@ import {
 import React, { useState } from 'react';
 
 interface Props {
-  grpIndex: number;
-  setPreviewIndex: ({
-    groupIndex,
-    componentIndex
-  }: {
-    groupIndex: number;
-    componentIndex: number;
-  }) => void;
+  variant: string;
+  setVariant: (variant: string) => void;
 }
 
-const VariationTabs: React.FC<Props> = ({ grpIndex, setPreviewIndex }) => {
-  const [selected, setSelected] = useState(0);
-
-  const handleSelect = (index: number) => {
-    setSelected(index);
-    setPreviewIndex({groupIndex: grpIndex, componentIndex: index});
-  }
+const VariationTabs: React.FC<Props> = ({ variant, setVariant }) => {
+  const handleSelect = (variant: string) => {
+    setVariant(variant);
+  };
 
   return (
     <Container px='0'>
@@ -39,29 +30,29 @@ const VariationTabs: React.FC<Props> = ({ grpIndex, setPreviewIndex }) => {
           p='1px'
         >
           <Tab
-            color={selected === 0 ? 'whiteAlpha.900' : 'inherit'}
-            bgColor={selected === 0 ? 'inherit' : 'gray.900'}
+            color={variant === 'default' ? 'whiteAlpha.900' : 'inherit'}
+            bgColor={variant === 'default' ? 'inherit' : 'gray.900'}
             transition='all .25s ease'
             borderRadius='8px 0px 0px 8px'
-            onClick={() => handleSelect(0)}
+            onClick={() => handleSelect('default')}
           >
             Default
           </Tab>
           <Tab
-            color={selected === 1 ? 'whiteAlpha.900' : 'inherit'}
-            bgColor={selected === 1 ? 'inherit' : 'gray.900'}
+            color={variant === 'variant1' ? 'whiteAlpha.900' : 'inherit'}
+            bgColor={variant === 'variant1' ? 'inherit' : 'gray.900'}
             transition='all .25s ease'
             borderRadius='0px'
-            onClick={() => handleSelect(1)}
+            onClick={() => handleSelect('variant1')}
           >
             Variation
           </Tab>
           <Tab
-            color={selected === 2 ? 'whiteAlpha.900' : 'inherit'}
-            bgColor={selected === 2 ? 'inherit' : 'gray.900'}
+            color={variant === 'variant2' ? 'whiteAlpha.900' : 'inherit'}
+            bgColor={variant === 'variant2' ? 'inherit' : 'gray.900'}
             transition='all .25s ease'
             borderRadius='0px 8px 8px 0px'
-            onClick={() => handleSelect(2)}
+            onClick={() => handleSelect('variant2')}
           >
             Variation
           </Tab>
