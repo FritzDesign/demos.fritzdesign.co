@@ -102,7 +102,7 @@ export const Gallery = (props: GalleryProps) => {
             top='50%'
             transform='translateY(-50%)'
             onClick={() => slider.current?.prev()}
-            icon={<IoChevronBackOutline />}
+            icon={<IoChevronBackOutline color='white' />}
             aria-label='Previous Slide'
           />
         )}
@@ -114,7 +114,7 @@ export const Gallery = (props: GalleryProps) => {
             top='50%'
             transform='translateY(-50%)'
             onClick={() => slider.current?.next()}
-            icon={<IoChevronForwardOutline />}
+            icon={<IoChevronForwardOutline color='white' />}
             aria-label='Next Slide'
           />
         )}
